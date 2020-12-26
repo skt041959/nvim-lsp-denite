@@ -22,7 +22,7 @@ class Source(LspSource):
         word = self._get_word_under_cursor()
         self.highlight_links.extend(
             [
-                HighlightLink("Position", self.syntax_name, "Comment", r"\[.*\]"),
+                HighlightLink("Position", self.syntax_name, "Comment", r"\[.\{-}\]"),
                 HighlightLink("Text", self.syntax_name, "String", r">\s.*$"),
                 HighlightLink("Word", f"{self.syntax_name}_Text", "Operator", word),
             ]

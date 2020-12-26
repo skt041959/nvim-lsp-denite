@@ -30,7 +30,7 @@ end
 
 local function parse_response(response)
     if response ~= nil then
-        return response
+        return vim.tbl_values(response)[1]
     else
         return {}
     end

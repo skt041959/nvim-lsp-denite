@@ -9,20 +9,16 @@ class LspResponse:
 
     @property
     def result(self) -> List[LspResponseEntry]:
-        if len(self._response) > 0:
-            return self._response[0].get("result", [])
-
-        else:
-            return []
+        return self._response.get("result", [])
 
     @property
     def is_error(self):
-        return len(self._response) == 1 and "error" in self._response[0]
+        return "error" in self._response
 
     @property
     def error_message(self) -> Optional[str]:
         if self.is_error:
-            error = self._response[0].get("error", {})
+            error = self._response.get("error", {})
             return error.get("message", None)
         else:
             return None
